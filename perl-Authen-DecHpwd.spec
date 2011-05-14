@@ -1,5 +1,5 @@
 %define upstream_name    Authen-DecHpwd
-%define upstream_version 2.005
+%define upstream_version 2.006
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
@@ -9,19 +9,14 @@ Summary:    DEC VMS password hashing
 License:    GPL+ or Artistic
 Group:      Development/Perl
 Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Authen/%{upstream_name}-%{upstream_version}.tar.lzma
-
+Source0:    http://www.cpan.org/modules/by-module/Authen/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires: perl(Data::Integer)
+BuildRequires: perl(Digest::CRC)
 BuildRequires: perl(Exporter)
 BuildRequires: perl(ExtUtils::CBuilder)
 BuildRequires: perl(Module::Build)
 BuildRequires: perl(Scalar::String)
 BuildRequires: perl(Test::More)
-BuildRequires: perl(base)
-BuildRequires: perl(constant)
-BuildRequires: perl(strict)
-BuildRequires: perl(warnings)
-BuildRequires: perl(Module::Build::Compat)
 BuildRequires: perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
