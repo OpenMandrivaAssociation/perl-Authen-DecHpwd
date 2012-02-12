@@ -1,24 +1,23 @@
-%define upstream_name    Authen-DecHpwd
+%define upstream_name Authen-DecHpwd
 %define upstream_version 2.006
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
 Release:	2
 
-Summary:    DEC VMS password hashing
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Authen/%{upstream_name}-%{upstream_version}.tar.gz
-BuildRequires: perl(Data::Integer)
-BuildRequires: perl(Digest::CRC)
-BuildRequires: perl(Exporter)
-BuildRequires: perl(ExtUtils::CBuilder)
-BuildRequires: perl(Module::Build)
-BuildRequires: perl(Scalar::String)
-BuildRequires: perl(Test::More)
-BuildRequires: perl-devel
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+Summary:	DEC VMS password hashing
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Authen/%{upstream_name}-%{upstream_version}.tar.gz
+BuildRequires:	perl(Data::Integer)
+BuildRequires:	perl(Digest::CRC)
+BuildRequires:	perl(Exporter)
+BuildRequires:	perl(ExtUtils::CBuilder)
+BuildRequires:	perl(Module::Build)
+BuildRequires:	perl(Scalar::String)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl-devel
 
 %description
 This module implements the 'LGI$HPWD' password hashing function from VMS,
@@ -31,24 +30,17 @@ pure Perl backup version for systems that can't handle XS.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 
-%{make}
+%make
 
 %check
-%{make} test
+%make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
-
-
+%{perl_vendorlib}/*
